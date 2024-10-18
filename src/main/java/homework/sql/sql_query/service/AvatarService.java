@@ -6,9 +6,11 @@ import homework.sql.sql_query.repository.AvatarRepository;
 import homework.sql.sql_query.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.print.Pageable;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -59,5 +61,9 @@ public class AvatarService {
 
     private String getExtensions(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
+
+    public Page<Avatar> getAllAvatars(Pageable pageable) {
+        return avatarRepository.findAll((org.springframework.data.domain.Pageable) pageable);
     }
 }

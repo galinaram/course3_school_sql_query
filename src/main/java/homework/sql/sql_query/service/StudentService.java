@@ -3,9 +3,12 @@ package homework.sql.sql_query.service;
 import homework.sql.sql_query.model.Student;
 import homework.sql.sql_query.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -31,6 +34,17 @@ public class StudentService {
 
     public Collection<Student> findByAgeBetween(Long min, Long max){
         return studentRepository.findByAgeBetween(min, max);
+    }
+
+    public Long getTotalStudents() {
+        return studentRepository.countAllStudents();
+    }
+    public Long getAvgAge(){
+        return studentRepository.avgAgeStudents();
+    }
+    public List<Student> getLastFiveStudents() {
+        Pageable pageable = (Pageable) PageRequest.of(0, 5);
+        return studentRepository.findLastFiveStudents(pageable);
     }
 }
 
