@@ -1,15 +1,17 @@
 package homework.sql.sql_query.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Student {
     @Id
     @GeneratedValue
     private Long id;
-
     private String name;
-    private int age;
+    private int age = 20;
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
