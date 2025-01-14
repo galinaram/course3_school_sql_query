@@ -16,7 +16,7 @@ CREATE TABLE public.car (
 );
 
 CREATE TABLE public.car_owners (
-	car_id bigserial NOT NULL,
+	car_id bigserial not NULL,
 	owner_id bigserial NOT NULL,
 	CONSTRAINT car_owners_pk PRIMARY KEY (car_id,owner_id),
 	CONSTRAINT car_owners_human_fk FOREIGN KEY (owner_id) REFERENCES public.human(id) ON DELETE CASCADE ON UPDATE CASCADE,
