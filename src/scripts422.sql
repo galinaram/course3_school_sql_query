@@ -22,3 +22,4 @@ CREATE TABLE public.car_owners (
 	CONSTRAINT car_owners_human_fk FOREIGN KEY (owner_id) REFERENCES public.human(id) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT car_owners_car_fk FOREIGN KEY (car_id) REFERENCES public.car(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+//
