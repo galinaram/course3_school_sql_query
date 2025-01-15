@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("students")
@@ -75,5 +76,18 @@ public class StudentController {
         }
         avatarService.uploadAvatar(id, avatar);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/count")
+    public Long getCountOfStudents() {
+        return studentService.getTotalStudents();
+    }
+    @GetMapping("/avg")
+    public Long getAvgAgeStudents(){
+        return studentService.getAvgAge();
+    }
+    @GetMapping("/last-five")
+    public List<Student> getLastFiveStudents() {
+        return studentService.getLastFiveStudents();
     }
 }
